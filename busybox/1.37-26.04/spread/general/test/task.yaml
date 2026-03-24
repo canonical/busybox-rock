@@ -5,19 +5,19 @@ environment:
 
 execute: |
   # Test busybox binary exists and runs
-  docker run --rm $IMAGE /usr/bin/busybox --help | MATCH "BusyBox"
+  docker run --rm $IMAGE exec busybox --help | MATCH "BusyBox"
   
   # Test version output
-  docker run --rm $IMAGE /usr/bin/busybox | head -1 | MATCH "BusyBox v"
+  docker run --rm $IMAGE exec busybox | head -1 | MATCH "BusyBox v"
   
   # Test some common symlinked commands work
-  docker run --rm $IMAGE ls /
-  docker run --rm $IMAGE echo "hello world" | MATCH "hello world"
-  docker run --rm $IMAGE cat /etc/os-release | MATCH "Ubuntu"
+  docker run --rm $IMAGE exec ls /
+  docker run --rm $IMAGE exec echo "hello world" | MATCH "hello world"
+  docker run --rm $IMAGE exec cat /etc/os-release | MATCH "Ubuntu"
   
   # Test the shell works
-  docker run --rm $IMAGE sh -c 'echo "shell works"' | MATCH "shell works"
+  docker run --rm $IMAGE exec sh -c 'echo "shell works"' | MATCH "shell works"
   
   # Test a few utilities
-  docker run --rm $IMAGE date
-  docker run --rm $IMAGE uname -a | MATCH "Linux"
+  docker run --rm $IMAGE exec date
+  docker run --rm $IMAGE exec uname -a | MATCH "Linux"
