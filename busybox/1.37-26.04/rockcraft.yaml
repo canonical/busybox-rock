@@ -16,7 +16,7 @@ parts:
     plugin: nil
     stage-packages:
       - base-files_chisel
-      - base-files_os-release
+      - base-files_release-info
       - busybox_bins
     override-prime: |
       craftctl default
