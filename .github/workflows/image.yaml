@@ -58,7 +58,8 @@ jobs:
       rock-repo-commit: ${{ github.head_ref || github.ref_name }}
       rockfile-directory: ${{ matrix.directory }}
       oci-archive-name: ${{ matrix.artifact-name }}
-      arch-map: ${{ needs.prepare.outputs.arch-map }}
+      arch-map: '{"amd64": ["ubuntu-latest"]}'
+      # arch-map: ${{ needs.prepare.outputs.arch-map }}
       rockcraft-test: ${{ matrix.run-tests }}
       pro-services: ${{ matrix.pro-services }}
     secrets:
