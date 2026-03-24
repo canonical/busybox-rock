@@ -1,0 +1,23 @@
+summary: test the busybox rock
+
+environment:
+  IMAGE: "busybox:latest"
+
+execute: |
+  # Test busybox binary exists and runs
+  docker run --rm $IMAGE /usr/bin/busybox --help | MATCH "BusyBox"
+  
+  # Test version output
+  docker run --rm $IMAGE /usr/bin/busybox | head -1 | MATCH "BusyBox v"
+  
+  # Test some common symlinked commands work
+  docker run --rm $IMAGE ls /
+  docker run --rm $IMAGE echo "hello world" | MATCH "hello world"
+  docker run --rm $IMAGE cat /etc/os-release | MATCH "Ubuntu"
+  
+  # Test the shell works
+  docker run --rm $IMAGE sh -c 'echo "shell works"' | MATCH "shell works"
+  
+  # Test a few utilities
+  docker run --rm $IMAGE date
+  docker run --rm $IMAGE uname -a | MATCH "Linux"

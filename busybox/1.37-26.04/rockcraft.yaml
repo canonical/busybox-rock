@@ -1,0 +1,25 @@
+name: busybox
+base: bare
+build-base: devel
+version: "1.37" # just for humans. Semantic versioning is recommended
+summary: A BusyBox rock
+description: |
+  This is a rock for BusyBox, a software suite that provides several
+  Unix utilities in a single executable file.
+platforms: # the platforms this rock should be built on and run on
+  amd64:
+
+run-user: _daemon_
+
+parts:
+  busybox:
+    plugin: nil
+    stage-packages:
+      - base-files_chisel
+      - base-files_os-release
+      - busybox_bins
+    override-prime: |
+      craftctl default
+      for cmd in $(${CRAFT_PART_INSTALL}/usr/bin/busybox --list); do
+          ln -s /usr/bin/busybox ${CRAFT_PRIME}/usr/bin/$cmd
+      done

@@ -2,11 +2,8 @@
 
 ## Reporting a vulnerability
 
-<!--- TODO: Rename this file to SECURITY.md --->
-<!--- TODO: Update the Private Security Report link--->
-
 To report a security issue, you can either:
- - file a [Private Security Report](https://github.com/FIXME/security/advisories/new) (see
+ - file a [Private Security Report](https://github.com/canonical/busybox-rock/security/advisories/new) (see
 [Privately reporting a security
 vulnerability](https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing/privately-reporting-a-security-vulnerability)
 for instructions), or
