@@ -23,3 +23,11 @@ parts:
       for cmd in $(${CRAFT_PART_INSTALL}/usr/bin/busybox --list); do
           ln -s /usr/bin/busybox ${CRAFT_PRIME}/usr/bin/$cmd
       done
+
+  deb-security-manifest:
+    plugin: make
+    after: [curl]
+    source: https://github.com/canonical/rocks-security-manifest
+    source-type: git
+    source-branch: main
+    override-prime: gen_manifest
