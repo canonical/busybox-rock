@@ -9,7 +9,7 @@ The rock ships the `busybox` binary together with symlinks for every applet it e
 Let's run a shell inside the rock and poke around.
 
 ```bash
-$ docker run --name=my-busybox-rock --rm -it busybox:1.37
+$ docker run --name=my-busybox-rock --rm busybox:1.37
 2025-12-17T16:33:37.340Z [pebble] {"type":"security","datetime":"2025-12-17T16:33:37Z","level":"WARN","event":"sys_startup:0","description":"Starting daemon","appid":"pebble"}
 2025-12-17T16:33:37.341Z [pebble] Started daemon.
 2025-12-17T16:33:37.341Z [pebble] POST /v1/services 78.436µs 400 (http+unix)
@@ -31,10 +31,22 @@ busybox --list | head
 Or use any of them directly via the symlinks:
 
 ```bash
-$ ls -l /etc/os-release
-lrwxrwxrwx    1 root     root            21 Jan  1  1970 /etc/os-release -> ../usr/lib/os-release
-$ wget -qO- https://example.com | head -n 1
-<!doctype html>
+$ ls -lha /etc | head
+total 56K
+drwxr-xr-x    1 0        0           4.0K Apr 23 12:43 .
+dr-xr-xr-x    1 0        0           4.0K Apr 23 12:43 ..
+-rw-r--r--    1 0        0             10 Apr 23 12:41 debian_version
+drwxr-xr-x    3 0        0           4.0K Apr 23 12:41 dpkg
+-rw-r--r--    1 0        0             19 Apr 23 12:41 group
+-rw-r--r--    1 0        0             92 Apr 23 12:41 host.conf
+-rw-r--r--    1 0        0             13 Apr 23 12:43 hostname
+-rw-r--r--    1 0        0            266 Apr 23 12:43 hosts
+-rw-r--r--    1 0        0             24 Apr 23 12:41 issue
+```
+
+```bash
+$ wget -qO- http://archive.ubuntu.com | head -n1
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
 ```
 
 Voilà.
