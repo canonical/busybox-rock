@@ -8,6 +8,7 @@ description: |
   Unix utilities in a single executable file.
 platforms: # the platforms this rock should be built on and run on
   amd64:
+  arm64:
 
 run-user: _daemon_
 
@@ -26,7 +27,7 @@ parts:
 
   deb-security-manifest:
     plugin: make
-    after: [curl]
+    after: [busybox]
     source: https://github.com/canonical/rocks-security-manifest
     source-type: git
     source-branch: main
