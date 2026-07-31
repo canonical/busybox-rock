@@ -9,6 +9,8 @@ description: |
 platforms: # the platforms this rock should be built on and run on
   amd64:
   arm64:
+  s390x:
+  ppc64el:
 
 run-user: _daemon_
 
