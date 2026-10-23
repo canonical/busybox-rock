@@ -1,4 +1,4 @@
-project: busybox
+project: busybox:1.37-26.04
 
 backends:
   craft:
@@ -23,10 +23,10 @@ suites:
       sudo apt remove --yes retry
 
       # Load the rock into docker
-      sudo rockcraft.skopeo --insecure-policy copy "oci-archive:$CRAFT_ARTIFACT" docker-daemon:busybox:latest
+      sudo rockcraft.skopeo --insecure-policy copy "oci-archive:$CRAFT_ARTIFACT" docker-daemon:busybox:1.37-26.04
 
     restore: |
-      docker image rm --force busybox:latest
+      docker image rm --force busybox:1.37-26.04
 
 exclude:
   - .git
