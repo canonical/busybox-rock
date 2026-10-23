@@ -53,4 +53,4 @@ Voilà.
 
 ## Available versions
 
-* [BusyBox 1.37 (Ubuntu 26.04)](./busybox/1.37-26.04/rockcraft.yaml)
+* [BusyBox 1.37 (Ubuntu 26.04)](https://github.com/canonical/busybox-rock/tree/1.37-26.04)
