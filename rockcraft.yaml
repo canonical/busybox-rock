@@ -1,6 +1,7 @@
 name: busybox
 base: bare
-build-base: ubuntu@26.10
+# TODO: Update once 26.10 is stabilized
+build-base: devel
 version: "1.38" # just for humans. Semantic versioning is recommended
 summary: A BusyBox rock
 description: |
@@ -17,10 +18,20 @@ run-user: _daemon_
 parts:
   busybox:
     plugin: nil
-    stage-packages:
-      - base-files_chisel
-      - base-files_release-info
-      - busybox_bins
+
+    # TODO: Uncomment once 26.10 is stabilized
+    # stage-packages:
+    #   - base-files_chisel
+    #   - base-files_release-info
+    #   - busybox_bins
+
+    # TODO: Remove once 26.10 is stabilized
+    override-build: |
+      craftctl default
+      chisel cut --release ubuntu-26.10 --root ${CRAFT_PART_INSTALL} \
+        base-files_release-info \
+        busybox_bins
+
     override-prime: |
       craftctl default
       for cmd in $(${CRAFT_PART_INSTALL}/usr/bin/busybox --list); do
