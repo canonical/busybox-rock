@@ -1,7 +1,7 @@
 summary: test the busybox rock
 
 environment:
-  IMAGE: "busybox:devel"
+  IMAGE: "busybox:1.38-26.10"
 
 execute: |
   # Test busybox binary exists and runs

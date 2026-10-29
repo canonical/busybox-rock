@@ -1,7 +1,7 @@
 name: busybox
 base: bare
-build-base: ubuntu@26.04
-version: "1.37" # just for humans. Semantic versioning is recommended
+build-base: ubuntu@26.10
+version: "1.38" # just for humans. Semantic versioning is recommended
 summary: A BusyBox rock
 description: |
   This is a rock for BusyBox, a software suite that provides several
